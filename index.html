@@ -165,9 +165,10 @@
       top: 0; left: 0; right: 0;
       z-index: 1000;
       height: var(--nav-h);
-      background: transparent;
+      background: rgba(20, 26, 20, 0.45);
       transition: background 0.35s ease, box-shadow 0.35s ease;
     }
+
 
     #navbar.scrolled {
       background: rgba(20, 26, 20, 0.97);
@@ -253,6 +254,7 @@
       right: 16px;
       z-index: 1300;
     }
+
     .hamburger span {
       position: absolute;
       width: 26px;
@@ -1092,28 +1094,152 @@
        FOOTER / CONTACT
     ============================================================ */
     #contact {
-      background: var(--dark);
+      position: relative;
       padding: 90px 0 0;
+      overflow: hidden;
+      background:
+        linear-gradient(to bottom, #141a14 0%, rgba(20,26,20,0.88) 55%, rgba(20,26,20,0.72) 100%),
+        url('/images/tree.jpg') center bottom / cover no-repeat;
     }
 
     .contact-top {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 70px;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 56px;
       padding-bottom: 70px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      align-items: start;
+      position: relative;
+      z-index: 1;
     }
 
-    .contact-form-col h3 {
-      font-family: var(--font-head);
-      font-size: 1.8rem;
-      color: var(--white);
+    /* Col 1 — Logo + socials */
+    .contact-info-col {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .contact-logo img {
+      height: 60px;
+      width: auto;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
       margin-bottom: 8px;
     }
-    .contact-form-col p {
-      color: rgba(255,255,255,0.55);
-      font-size: 0.9rem;
-      margin-bottom: 30px;
+
+    .contact-tagline {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.85rem;
+      line-height: 1.7;
+    }
+
+    .social-links { display: flex; gap: 10px; margin-top: 4px; }
+    .social-link {
+      width: 38px; height: 38px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.65);
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .social-link svg { width: 18px; height: 18px; fill: currentColor; }
+    .social-link:hover {
+      background: var(--tan);
+      border-color: var(--tan);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* Col 2 — Contact details */
+    .footer-contact-col {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .footer-contact-col .col-label {
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--tan);
+      margin-bottom: 4px;
+    }
+
+    .contact-detail {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .contact-detail-icon {
+      width: 34px; height: 34px;
+      border: 1px solid rgba(186,127,51,0.4);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      color: var(--tan-light);
+    }
+    .contact-detail-icon svg { width: 16px; height: 16px; fill: currentColor; }
+    .contact-detail-text strong {
+      display: block;
+      color: var(--white);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+    .contact-detail-text span,
+    .contact-detail-text a {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+    .contact-detail-text a:hover { color: var(--tan-light); }
+
+    /* Col 3 — CTA + mascot anchored at bottom */
+    .footer-cta-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: relative;
+      padding-bottom: 300px;
+      min-height: 320px;
+    }
+    .footer-cta-col .col-label {
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--tan);
+      margin-bottom: 12px;
+    }
+    .footer-cta-heading {
+      font-family: var(--font-head);
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.18;
+      margin-bottom: 10px;
+    }
+    .footer-cta-sub {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.85rem;
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+    .footer-cta-col .btn { min-width: 220px; }
+
+    .footer-mascot {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      filter: drop-shadow(-6px 8px 24px rgba(0,0,0,0.65));
+      animation: mascot-bounce 6s ease-in-out infinite;
     }
 
     .form-row {
@@ -1166,86 +1292,11 @@
       font-size: 1rem;
     }
 
-    /* Contact info col */
-    .contact-info-col {
-      display: flex;
-      flex-direction: column;
-      gap: 36px;
-    }
-
-    .contact-logo img {
-      height: 60px;
-      width: auto;
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
-      margin-bottom: 8px;
-    }
-
-    .contact-tagline {
-      color: rgba(255,255,255,0.5);
-      font-size: 0.88rem;
-      line-height: 1.6;
-      max-width: 320px;
-    }
-
-    .contact-details {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .contact-detail {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-    }
-    .contact-detail-icon {
-      width: 36px; height: 36px;
-      background: rgba(186,127,51,0.15);
-      border: 1px solid rgba(186,127,51,0.3);
-      border-radius: 6px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
-    .contact-detail-text strong {
-      display: block;
-      color: var(--white);
-      font-size: 0.9rem;
-      margin-bottom: 2px;
-    }
-    .contact-detail-text span,
-    .contact-detail-text a {
-      color: rgba(255,255,255,0.55);
-      font-size: 0.85rem;
-      line-height: 1.5;
-    }
-    .contact-detail-text a:hover { color: var(--tan-light); }
-
-    .social-links {
-      display: flex;
-      gap: 10px;
-    }
-
-    .social-link {
-      width: 40px; height: 40px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,0.7);
-      font-size: 1rem;
-      transition: all 0.2s;
-      text-decoration: none;
-    }
-    .social-link:hover {
-      background: var(--red);
-      border-color: var(--red);
-      color: var(--white);
-      transform: translateY(-2px);
-    }
 
     /* Footer bottom bar */
     .footer-bar {
+      position: relative;
+      z-index: 1;
       padding: 20px 0;
       display: flex;
       align-items: center;
@@ -1277,7 +1328,9 @@
     @media (max-width: 900px) {
       .about-inner { grid-template-columns: 1fr; gap: 40px; }
       .about-img-wrap img { height: 340px; }
-      .contact-top { grid-template-columns: 1fr; gap: 50px; }
+      .contact-top { grid-template-columns: 1fr; gap: 40px; }
+      .footer-cta-col { order: -1; padding-bottom: 260px; }
+      .footer-mascot { width: 220px; }
     }
 
     /* Mascot divider — between hero and services on mobile */
@@ -1329,6 +1382,325 @@
       .review-badge { padding: 10px 14px; }
       .gallery-grid { grid-template-columns: 1fr; }
     }
+
+    /* ============================================================
+       STICKY BOTTOM ACTION BAR — mobile only
+    ============================================================ */
+    .sticky-action-bar {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 800;
+      grid-template-columns: 1fr 1fr;
+      box-shadow: 0 -3px 20px rgba(0,0,0,0.35);
+    }
+
+    .sticky-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      padding: 12px 0;
+      padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+      font-family: var(--font-body);
+      font-weight: 900;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      transition: filter 0.15s;
+    }
+    .sticky-btn:active { filter: brightness(0.88); }
+
+    .sticky-btn-call { background: var(--red); }
+    .sticky-btn-text {
+      background: var(--dark2);
+      border-left: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .sticky-btn-icon { font-size: 1.25rem; line-height: 1; }
+
+    @media (max-width: 768px) {
+      .sticky-action-bar { display: grid; }
+      body { padding-bottom: 62px; }
+    }
+
+    /* ============================================================
+       ESTIMATE MODAL
+    ============================================================ */
+    .estimate-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1500;
+      background: rgba(10,16,10,0.52);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .estimate-modal-overlay.open { display: flex; }
+
+    .estimate-modal {
+      background: var(--white);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 540px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.32);
+      position: relative;
+    }
+
+    .estimate-modal-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 28px 28px 0;
+      border-bottom: 1px solid var(--light-gray);
+      padding-bottom: 18px;
+    }
+    .estimate-modal-header h2 {
+      font-family: var(--font-head);
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--dark);
+      line-height: 1.15;
+    }
+    .estimate-modal-header p {
+      color: var(--gray);
+      font-size: 0.86rem;
+      margin-top: 4px;
+    }
+    .estimate-modal-close {
+      flex-shrink: 0;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: none;
+      background: var(--light-gray);
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dark);
+      transition: background 0.12s;
+    }
+    .estimate-modal-close:hover { background: #ddd; }
+
+    .estimate-modal-body { padding: 22px 28px 28px; }
+
+    /* Light-theme overrides inside modal */
+    .estimate-modal .form-field label { color: #4a4a4a; }
+    .estimate-modal .form-field input,
+    .estimate-modal .form-field select,
+    .estimate-modal .form-field textarea {
+      background: var(--light-gray);
+      border: 1.5px solid #e0dcd5;
+      color: var(--dark);
+    }
+    .estimate-modal .form-field input::placeholder,
+    .estimate-modal .form-field textarea::placeholder { color: #b0a898; }
+    .estimate-modal .form-field input:focus,
+    .estimate-modal .form-field select:focus,
+    .estimate-modal .form-field textarea:focus {
+      border-color: var(--tan);
+      background: var(--white);
+    }
+    .estimate-modal .form-field select option { background: var(--white); color: var(--dark); }
+
+    /* ============================================================
+       PHOTO TRIAGE WIZARD — mobile only
+    ============================================================ */
+    .triage-wizard {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: linear-gradient(160deg, var(--dark) 0%, var(--dark2) 100%);
+      flex-direction: column;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    @media (max-width: 768px) {
+      .triage-wizard.open { display: flex; }
+    }
+
+    .triage-progress {
+      height: 4px;
+      background: rgba(255,255,255,0.08);
+      flex-shrink: 0;
+    }
+    .triage-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--tan), var(--red));
+      transition: width 0.4s ease;
+    }
+
+    .triage-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      flex-shrink: 0;
+    }
+    .triage-back,
+    .triage-close {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.5);
+      font-size: 1rem;
+      cursor: pointer;
+      min-width: 44px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .triage-back:active,
+    .triage-close:active { background: rgba(255,255,255,0.08); color: var(--white); }
+    .triage-step-count {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .triage-body-wrap {
+      flex: 1;
+      padding: 20px 20px 32px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .triage-step {
+      display: none;
+      flex-direction: column;
+      flex: 1;
+      animation: triage-in 0.22s ease;
+    }
+    .triage-step.active { display: flex; }
+
+    @keyframes triage-in {
+      from { opacity: 0; transform: translateX(18px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .triage-question {
+      font-family: var(--font-head);
+      font-size: 1.75rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.18;
+      margin-bottom: 6px;
+    }
+    .triage-hint {
+      color: rgba(255,255,255,0.42);
+      font-size: 0.85rem;
+      margin-bottom: 22px;
+    }
+    .triage-sublabel {
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--tan);
+      margin-bottom: 10px;
+    }
+
+    .triage-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .triage-cards-3 { grid-template-columns: repeat(3, 1fr); }
+
+    .triage-card {
+      background: rgba(255,255,255,0.05);
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 18px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      color: rgba(255,255,255,0.85);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-align: center;
+      line-height: 1.3;
+      transition: border-color 0.18s, background 0.18s, transform 0.12s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .triage-card:active { transform: scale(0.96); }
+    .triage-card.selected {
+      background: rgba(186,127,51,0.18);
+      border-color: var(--tan);
+      color: var(--white);
+    }
+    .triage-card-emoji { font-size: 1.8rem; line-height: 1; }
+    .triage-card-sub { font-size: 0.68rem; opacity: 0.5; display: block; margin-top: 2px; }
+
+    .triage-continue {
+      margin-top: auto;
+      width: 100%;
+      padding: 16px;
+      font-size: 1rem;
+    }
+    .triage-continue:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+
+    /* Step 3 finale */
+    .triage-finale {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-top: 16px;
+    }
+    .triage-finale-icon { font-size: 3.5rem; margin-bottom: 14px; }
+
+    .triage-sms-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: linear-gradient(180deg, #2ecc71 0%, #1da851 100%);
+      color: var(--white);
+      border-radius: 14px;
+      padding: 18px 22px;
+      width: 100%;
+      margin: 24px 0 14px;
+      text-decoration: none;
+      transition: filter 0.15s;
+      box-shadow: 0 4px 24px rgba(29,168,81,0.4);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .triage-sms-btn:active { filter: brightness(0.88); }
+    .triage-sms-icon { font-size: 2rem; flex-shrink: 0; }
+    .triage-sms-text { text-align: left; }
+    .triage-sms-text strong { display: block; font-size: 1.05rem; font-weight: 900; }
+    .triage-sms-text span { font-size: 0.82rem; opacity: 0.8; }
+
+    .triage-disclaimer {
+      color: rgba(255,255,255,0.32);
+      font-size: 0.73rem;
+      line-height: 1.55;
+      max-width: 280px;
+    }
   </style>
 </head>
 <body>
@@ -1352,7 +1724,7 @@
 
     <div class="nav-right">
       <a href="tel:8172171155" class="nav-phone">(817) 217-1155</a>
-      <a href="#contact" class="btn btn-red">Get a Free Estimate</a>
+      <a href="#contact" class="btn btn-red" data-estimate>Get a Free Estimate</a>
     </div>
   </div>
 </nav>
@@ -1372,7 +1744,7 @@
     <li><a href="#contact"   class="mobile-link">Contact</a></li>
   </ul>
   <a href="tel:8172171155" class="mobile-phone">(817) 217-1155</a>
-  <a href="#contact" class="btn btn-red mobile-link">Get a Free Estimate</a>
+  <button class="btn btn-red" id="mobile-menu-estimate">Get a Free Estimate</button>
 </div>
 
 <!-- ============================================================
@@ -1397,7 +1769,7 @@
     </p>
 
     <div class="hero-ctas">
-      <a href="#contact" class="btn btn-red">Get a Free Estimate</a>
+      <a href="#contact" class="btn btn-red" id="hero-estimate-btn">Get a Free Estimate</a>
       <a href="tel:8172171155" class="hero-phone-link">(817) 217-1155</a>
     </div>
 
@@ -1613,6 +1985,10 @@
       </div>
 
     </div>
+
+    <div style="text-align:center;margin-top:48px;">
+      <a href="#contact" class="btn btn-red" data-estimate>Get a Free Estimate</a>
+    </div>
   </div>
 </section>
 
@@ -1782,6 +2158,10 @@
 
 
     </div>
+
+    <div style="text-align:center;margin-top:48px;">
+      <a href="#contact" class="btn btn-red" data-estimate>Get a Free Estimate</a>
+    </div>
   </div>
 </section>
 
@@ -1909,96 +2289,69 @@
   <div class="container">
     <div class="contact-top">
 
-      <!-- Form -->
-      <div class="contact-form-col">
-        <h3>Get Your Free Estimate</h3>
-        <p>Tell us about your tree — we'll get back to you fast.</p>
-
-        <form name="estimate" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="estimate" />
-          <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
-
-          <div class="form-row">
-            <div class="form-field">
-              <label for="fname">Name</label>
-              <input type="text" id="fname" name="name" placeholder="Your name" required />
-            </div>
-            <div class="form-field">
-              <label for="fphone">Phone</label>
-              <input type="tel" id="fphone" name="phone" placeholder="(817) 000-0000" required />
-            </div>
-          </div>
-
-          <div class="form-field">
-            <label for="femail">Email</label>
-            <input type="email" id="femail" name="email" placeholder="you@email.com" />
-          </div>
-
-          <div class="form-field">
-            <label for="fservice">Service Needed</label>
-            <select id="fservice" name="service">
-              <option value="">Select a service...</option>
-              <option>Tree Removal</option>
-              <option>Tree Trimming &amp; Pruning</option>
-              <option>Stump Grinding</option>
-              <option>Shrub &amp; Bush Trimming</option>
-              <option>Cactus Removal</option>
-              <option>Brush &amp; Yard Cleanup</option>
-              <option>Emergency / Storm Service</option>
-              <option>Other / Not Sure</option>
-            </select>
-          </div>
-
-          <div class="form-field">
-            <label for="fmessage">Tell Us More</label>
-            <textarea id="fmessage" name="message" placeholder="Describe the job, tree size, location..."></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-red btn-submit">Send My Request →</button>
-        </form>
-      </div>
-
-      <!-- Info -->
+      <!-- Col 1 — Logo + tagline + socials -->
       <div class="contact-info-col">
         <div class="contact-logo">
           <img src="/logos/logo.png" alt="Next Level Tree Service LLC" />
-          <p class="contact-tagline">Tarrant County's most trusted family-owned tree service. Honest work, fair prices, spotless cleanup — every time.</p>
         </div>
-
-        <div class="contact-details">
-          <div class="contact-detail">
-            <div class="contact-detail-icon">📞</div>
-            <div class="contact-detail-text">
-              <strong>Phone</strong>
-              <a href="tel:8172171155">(817) 217-1155</a>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div class="contact-detail-icon">📍</div>
-            <div class="contact-detail-text">
-              <strong>Address</strong>
-              <span>7033 Crabtree Ln<br/>North Richland Hills, TX 76182</span>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div class="contact-detail-icon">🕐</div>
-            <div class="contact-detail-text">
-              <strong>Hours</strong>
-              <span>Monday–Saturday: Open 24 Hours<br/>Sunday: Closed</span>
-            </div>
-          </div>
-        </div>
-
+        <p class="contact-tagline">Tarrant County's most trusted family-owned tree service. Honest work, fair prices, spotless cleanup — every time.</p>
         <div>
-          <p style="color:rgba(255,255,255,0.4);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;">Follow Us</p>
+          <p style="color:rgba(255,255,255,0.35);font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:10px;">Follow Us</p>
           <div class="social-links">
-            <a href="https://www.facebook.com/p/Next-Level-Tree-Service-LLC-100069047972129/" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">f</a>
-            <a href="https://www.yelp.com/biz/next-level-tree-service-keller" target="_blank" rel="noopener" class="social-link" aria-label="Yelp">y</a>
-            <a href="https://nextdoor.com/pages/next-level-tree-service-irving-tx/" target="_blank" rel="noopener" class="social-link" aria-label="Nextdoor">n</a>
+            <a href="https://www.facebook.com/p/Next-Level-Tree-Service-LLC-100069047972129/" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073C24 5.41 18.627 0 12 0S0 5.41 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.yelp.com/biz/next-level-tree-service-keller" target="_blank" rel="noopener" class="social-link" aria-label="Yelp">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.16 12.59l-4.63-1.64c-.48-.17-.96.19-.96.7v.01c0 .37.21.7.54.87l4.37 2.18c.52.26 1.13-.13 1.09-.71-.03-.62-.05-.99-.41-1.41zm-1.55 4.74l-4.05-2.59c-.42-.27-.97-.06-1.13.41l-.01.03c-.11.34-.02.71.23.95l3.42 3.28c.41.39 1.07.19 1.22-.36.22-.79.35-1.29.32-1.72zM12.1 10.47V5.7c0-.55-.45-1-.97-.95-.79.07-1.27.12-1.67.38-.37.24-.38.75-.01.99l4.1 2.69c.35.23.54.61.55 1.01V9.87c0 .56.56.93 1.06.69l.01-.01c.34-.16.56-.5.56-.88V5.12c0-.52-.43-.95-.96-.95H9.74c-.53 0-.96.43-.96.95v5.35c0 .52.43.95.96.95h1.37c.53 0 .99-.47.99-1zm-2.28 3.36c.13-.46-.18-.93-.66-1.01l-4.87-.78c-.6-.1-1.09.46-.89 1.03.25.73.41 1.17.72 1.53.29.33.76.34 1.08.04l3.73-3.45c.29-.27.76-.2.96.15l.01.01c.13.22.13.49 0 .71l-3.4 5.51c-.33.54-.03 1.23.59 1.37.84.19 1.35.29 1.83.22.45-.07.72-.5.59-.93l-1.13-4.14c-.13-.47.17-.94.65-1.01l.01-.01c.34-.05.66.12.81.43l2.48 5.13c.24.5.82.72 1.32.5.68-.31 1.08-.5 1.37-.79.28-.27.28-.72-.01-.99l-3.9-3.65c-.34-.32-.41-.83-.16-1.22l.01-.02c.19-.29.52-.44.86-.4l5.01.66c.61.08 1.11-.5.92-1.08-.25-.77-.41-1.23-.72-1.59-.29-.34-.77-.35-1.08-.04l-4.9 4.53c-.3.28-.77.22-.98-.13l-.01-.02c-.13-.22-.13-.49.01-.71l2.26-3.64c.33-.53.04-1.22-.57-1.37z"/></svg>
+            </a>
+            <a href="https://nextdoor.com/pages/next-level-tree-service-irving-tx/" target="_blank" rel="noopener" class="social-link" aria-label="Nextdoor">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.75 17.25h-1.5v-6.75H9.75v-1.5h1.5V7.5c0-1.657 1.343-3 3-3h1.5v1.5h-1.5c-.828 0-1.5.672-1.5 1.5v1.5h3l-.375 1.5H12.75v6.75z"/></svg>
+            </a>
           </div>
         </div>
-
       </div>
+
+      <!-- Col 2 — Contact details -->
+      <div class="footer-contact-col">
+        <p class="col-label">Get In Touch</p>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/></svg>
+          </div>
+          <div class="contact-detail-text">
+            <strong>Phone</strong>
+            <a href="tel:8172171155">(817) 217-1155</a>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+          </div>
+          <div class="contact-detail-text">
+            <strong>Address</strong>
+            <span>7033 Crabtree Ln<br/>North Richland Hills, TX 76182</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm.5 11H11V7h1.5v5.25l3.25 1.94-.75 1.25L12.5 13z"/></svg>
+          </div>
+          <div class="contact-detail-text">
+            <strong>Hours</strong>
+            <span>Mon–Sat: Open 24 Hours<br/>Sun: Emergency calls welcome</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Col 3 — CTA + mascot grounded at bottom -->
+      <div class="footer-cta-col">
+        <p class="col-label">Free Estimate</p>
+        <p class="footer-cta-heading">Your yard.<br/>Daniel's problem.</p>
+        <p class="footer-cta-sub">No obligation. Fair price. Always clean up.</p>
+        <a href="#contact" class="btn btn-red" data-estimate>Get a Free Estimate</a>
+        <img src="/images/mascot.png" alt="Next Level Tree Service mascot" class="footer-mascot" />
+      </div>
+
     </div>
 
     <div class="footer-bar">
@@ -2009,21 +2362,187 @@
 </footer>
 
 <!-- ============================================================
+     ESTIMATE MODAL
+============================================================ -->
+<div class="estimate-modal-overlay" id="estimate-modal-overlay">
+  <div class="estimate-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+
+    <div class="estimate-modal-header">
+      <div>
+        <h2 id="modal-title">Get Your Free Estimate</h2>
+        <p>Tell us about your tree — we'll get back to you fast.</p>
+      </div>
+      <button class="estimate-modal-close" id="estimate-modal-close" aria-label="Close">✕</button>
+    </div>
+
+    <div class="estimate-modal-body">
+      <form name="estimate" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="estimate" />
+        <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="mfname">Name</label>
+            <input type="text" id="mfname" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-field">
+            <label for="mfphone">Phone</label>
+            <input type="tel" id="mfphone" name="phone" placeholder="(817) 000-0000" required />
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="mfemail">Email</label>
+          <input type="email" id="mfemail" name="email" placeholder="you@email.com" />
+        </div>
+
+        <div class="form-field">
+          <label for="mfservice">Service Needed</label>
+          <select id="mfservice" name="service">
+            <option value="">Select a service...</option>
+            <option>Tree Removal</option>
+            <option>Tree Trimming &amp; Pruning</option>
+            <option>Stump Grinding</option>
+            <option>Shrub &amp; Bush Trimming</option>
+            <option>Cactus Removal</option>
+            <option>Brush &amp; Yard Cleanup</option>
+            <option>Emergency / Storm Service</option>
+            <option>Other / Not Sure</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="mfmessage">Tell Us More</label>
+          <textarea id="mfmessage" name="message" placeholder="Describe the job, tree size, location..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-red btn-submit">Send My Request →</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================================
+     PHOTO TRIAGE WIZARD — mobile only
+============================================================ -->
+<div class="triage-wizard" id="triage-wizard" role="dialog" aria-modal="true" aria-label="Get a fast photo quote">
+
+  <div class="triage-progress">
+    <div class="triage-progress-fill" id="triage-progress-fill" style="width:33%"></div>
+  </div>
+
+  <div class="triage-header">
+    <button class="triage-back" id="triage-back" aria-label="Go back">← Back</button>
+    <span class="triage-step-count" id="triage-step-count">Step 1 of 3</span>
+    <button class="triage-close" id="triage-close" aria-label="Close wizard">✕</button>
+  </div>
+
+  <div class="triage-body-wrap">
+
+    <!-- Step 1 — Service type -->
+    <div class="triage-step active" id="triage-s1">
+      <h2 class="triage-question">What do you need?</h2>
+      <p class="triage-hint">Tap one to continue.</p>
+      <div class="triage-cards">
+        <button class="triage-card" data-step="1" data-key="service" data-value="Tree Removal">
+          <span class="triage-card-emoji">🌳</span>Tree Removal
+        </button>
+        <button class="triage-card" data-step="1" data-key="service" data-value="Tree Trimming">
+          <span class="triage-card-emoji">✂️</span>Trimming &amp; Pruning
+        </button>
+        <button class="triage-card" data-step="1" data-key="service" data-value="Stump Grinding">
+          <span class="triage-card-emoji">🪨</span>Stump Grinding
+        </button>
+        <button class="triage-card" data-step="1" data-key="service" data-value="Storm Damage Cleanup">
+          <span class="triage-card-emoji">⛈️</span>Storm Damage
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 2 — Location + Size -->
+    <div class="triage-step" id="triage-s2">
+      <h2 class="triage-question">Tell us about it.</h2>
+      <p class="triage-sublabel">Where is it?</p>
+      <div class="triage-cards triage-cards-3">
+        <button class="triage-card" data-step="2" data-key="location" data-value="front yard">
+          <span class="triage-card-emoji">🏠</span>Front Yard
+        </button>
+        <button class="triage-card" data-step="2" data-key="location" data-value="back yard">
+          <span class="triage-card-emoji">🌿</span>Back Yard
+        </button>
+        <button class="triage-card" data-step="2" data-key="location" data-value="side yard">
+          <span class="triage-card-emoji">↔️</span>Side Yard
+        </button>
+      </div>
+      <p class="triage-sublabel" style="margin-top:14px">How tall roughly?</p>
+      <div class="triage-cards triage-cards-3">
+        <button class="triage-card" data-step="2" data-key="size" data-value="small (under 20 ft)">
+          <span class="triage-card-emoji">🌱</span>Small<span class="triage-card-sub">Under 20 ft</span>
+        </button>
+        <button class="triage-card" data-step="2" data-key="size" data-value="medium (20–40 ft)">
+          <span class="triage-card-emoji">🌲</span>Medium<span class="triage-card-sub">20–40 ft</span>
+        </button>
+        <button class="triage-card" data-step="2" data-key="size" data-value="large (40+ ft)">
+          <span class="triage-card-emoji">🌳</span>Large<span class="triage-card-sub">40+ ft</span>
+        </button>
+      </div>
+      <button class="btn btn-red triage-continue" id="triage-s2-next" disabled>Continue →</button>
+    </div>
+
+    <!-- Step 3 — SMS hand-off -->
+    <div class="triage-step" id="triage-s3">
+      <div class="triage-finale">
+        <div class="triage-finale-icon">📸</div>
+        <h2 class="triage-question">One photo = fast quote.</h2>
+        <p style="color:rgba(255,255,255,0.55);font-size:0.95rem;line-height:1.65;margin-top:10px">
+          Stand at the base, snap one shot looking up. Daniel responds with a ballpark price — usually within the hour.
+        </p>
+        <a href="#" class="triage-sms-btn" id="triage-sms-link">
+          <span class="triage-sms-icon">💬</span>
+          <div class="triage-sms-text">
+            <strong>Text Daniel a Photo</strong>
+            <span>(817) 217-1155</span>
+          </div>
+        </a>
+        <p class="triage-disclaimer">Opens your Messages app with your job details pre-filled. Just attach your photo and hit send.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================================
+     STICKY BOTTOM ACTION BAR — mobile only
+============================================================ -->
+<div class="sticky-action-bar" id="sticky-action-bar" aria-label="Quick contact">
+  <a href="tel:8172171155" class="sticky-btn sticky-btn-call">
+    <span class="sticky-btn-icon">📞</span>
+    <span>Call Now</span>
+  </a>
+  <a href="sms:8172171155" class="sticky-btn sticky-btn-text">
+    <span class="sticky-btn-icon">💬</span>
+    <span>Text Us</span>
+  </a>
+</div>
+
+<!-- ============================================================
      JAVASCRIPT
 ============================================================ -->
 <script>
-  // ----- Navbar scroll -----
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 50);
-  }, { passive: true });
-  // Start scrolled if page loads mid-scroll
-  if (window.scrollY > 50) navbar.classList.add('scrolled');
-
-  // ----- Mobile menu -----
+  // ----- Element references -----
+  const navbar     = document.getElementById('navbar');
   const hamburger  = document.getElementById('hamburger-btn');
   const mobileMenu = document.getElementById('mobile-menu');
 
+  // ----- Navbar scroll -----
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  }, { passive: true });
+
+  if (window.scrollY > 50) navbar.classList.add('scrolled');
+
+  // ----- Mobile menu -----
   hamburger.addEventListener('click', () => {
     const isOpen = mobileMenu.classList.toggle('open');
     hamburger.classList.toggle('open', isOpen);
@@ -2091,8 +2610,140 @@
     item.setAttribute('role', 'button');
   });
 
+  // ----- Photo Triage Wizard -----
+  (function () {
+    const wizard      = document.getElementById('triage-wizard');
+    const progressFill= document.getElementById('triage-progress-fill');
+    const stepCount   = document.getElementById('triage-step-count');
+    const backBtn     = document.getElementById('triage-back');
+    const closeBtn    = document.getElementById('triage-close');
+    const s2Next      = document.getElementById('triage-s2-next');
+    const smsLink     = document.getElementById('triage-sms-link');
+    const steps       = ['triage-s1','triage-s2','triage-s3'].map(id => document.getElementById(id));
+    const progressPct = ['33%','66%','100%'];
+
+    let currentStep = 0;
+    const answers   = { service: '', location: '', size: '' };
+
+    function openWizard() {
+      currentStep = 0;
+      answers.service = answers.location = answers.size = '';
+      document.querySelectorAll('.triage-card').forEach(c => c.classList.remove('selected'));
+      s2Next.disabled = true;
+      showStep(0);
+      wizard.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeWizard() {
+      wizard.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function showStep(n) {
+      steps.forEach((s, i) => s.classList.toggle('active', i === n));
+      progressFill.style.width = progressPct[n];
+      stepCount.textContent    = `Step ${n + 1} of 3`;
+      backBtn.style.visibility = n === 0 ? 'hidden' : 'visible';
+      currentStep = n;
+      wizard.scrollTop = 0;
+    }
+
+    function buildSmsBody() {
+      return encodeURIComponent(
+        `Hi Daniel! I found Next Level Tree Service online. I need: ${answers.service} — it's in my ${answers.location} and the tree is ${answers.size}. I'm sending a photo now. Can you give me a ballpark quote?`
+      );
+    }
+
+    // Card taps
+    document.querySelectorAll('.triage-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const key  = card.dataset.key;
+        const step = parseInt(card.dataset.step);
+
+        // Clear siblings in same group
+        document.querySelectorAll(`.triage-card[data-key="${key}"]`)
+          .forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        answers[key] = card.dataset.value;
+
+        if (step === 1) {
+          setTimeout(() => showStep(1), 200);
+        } else {
+          s2Next.disabled = !(answers.location && answers.size);
+        }
+      });
+    });
+
+    s2Next.addEventListener('click', () => {
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+      smsLink.href = `sms:8172171155${isIOS ? '&' : '?'}body=${buildSmsBody()}`;
+      showStep(2);
+    });
+
+    backBtn.addEventListener('click',  () => { if (currentStep > 0) showStep(currentStep - 1); });
+    closeBtn.addEventListener('click', closeWizard);
+
+    // Expose for modal JS
+    window._openWizard = openWizard;
+
+    // Trigger from hero CTA on mobile
+    const heroCta = document.getElementById('hero-estimate-btn');
+    if (heroCta) {
+      heroCta.addEventListener('click', e => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          openWizard();
+        }
+      });
+    }
+  })();
+
+  // ----- Estimate Modal -----
+  (function () {
+    const overlay   = document.getElementById('estimate-modal-overlay');
+    const closeBtn  = document.getElementById('estimate-modal-close');
+
+    function openModal() {
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    // Wire all [data-estimate] buttons — modal on desktop, wizard on mobile
+    document.querySelectorAll('[data-estimate]').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        if (window.innerWidth <= 768) {
+          // openWizard is defined in the triage IIFE — expose it
+          if (window._openWizard) window._openWizard();
+        } else {
+          openModal();
+        }
+      });
+    });
+
+    // Mobile menu "Get a Free Estimate" — always opens wizard, closes menu
+    const mobileMenuEstimate = document.getElementById('mobile-menu-estimate');
+    if (mobileMenuEstimate) {
+      mobileMenuEstimate.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+        document.body.style.overflow = '';
+        if (window._openWizard) window._openWizard();
+      });
+    }
+  })();
+
   // ----- Smooth scroll offset for fixed nav -----
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  document.querySelectorAll('a[href^="#"]:not([data-estimate])').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const target = document.querySelector(this.getAttribute('href'));
       if (target) {
