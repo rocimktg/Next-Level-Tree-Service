@@ -2445,49 +2445,105 @@
       <h2 class="triage-question">What do you need?</h2>
       <p class="triage-hint">Tap one to continue.</p>
       <div class="triage-cards">
-        <button class="triage-card" data-step="1" data-key="service" data-value="Tree Removal">
+        <button class="triage-card" data-key="service" data-value="Tree Removal">
           <span class="triage-card-emoji">🌳</span>Tree Removal
         </button>
-        <button class="triage-card" data-step="1" data-key="service" data-value="Tree Trimming">
+        <button class="triage-card" data-key="service" data-value="Tree Trimming">
           <span class="triage-card-emoji">✂️</span>Trimming &amp; Pruning
         </button>
-        <button class="triage-card" data-step="1" data-key="service" data-value="Stump Grinding">
+        <button class="triage-card" data-key="service" data-value="Stump Grinding">
           <span class="triage-card-emoji">🪨</span>Stump Grinding
         </button>
-        <button class="triage-card" data-step="1" data-key="service" data-value="Storm Damage Cleanup">
+        <button class="triage-card" data-key="service" data-value="Storm Damage Cleanup">
           <span class="triage-card-emoji">⛈️</span>Storm Damage
         </button>
       </div>
     </div>
 
-    <!-- Step 2 — Location + Size -->
-    <div class="triage-step" id="triage-s2">
+    <!-- Step 2a — Removal / Trimming: location + height -->
+    <div class="triage-step" id="triage-s2-standard">
       <h2 class="triage-question">Tell us about it.</h2>
       <p class="triage-sublabel">Where is it?</p>
       <div class="triage-cards triage-cards-3">
-        <button class="triage-card" data-step="2" data-key="location" data-value="front yard">
+        <button class="triage-card" data-key="location" data-value="front yard">
           <span class="triage-card-emoji">🏠</span>Front Yard
         </button>
-        <button class="triage-card" data-step="2" data-key="location" data-value="back yard">
+        <button class="triage-card" data-key="location" data-value="back yard">
           <span class="triage-card-emoji">🌿</span>Back Yard
         </button>
-        <button class="triage-card" data-step="2" data-key="location" data-value="side yard">
+        <button class="triage-card" data-key="location" data-value="side yard">
           <span class="triage-card-emoji">↔️</span>Side Yard
         </button>
       </div>
-      <p class="triage-sublabel" style="margin-top:14px">How tall roughly?</p>
-      <div class="triage-cards triage-cards-3">
-        <button class="triage-card" data-step="2" data-key="size" data-value="small (under 20 ft)">
+      <p class="triage-sublabel" style="margin-top:14px">Roughly how tall?</p>
+      <div class="triage-cards triage-cards-3" style="grid-template-columns:repeat(2,1fr)">
+        <button class="triage-card" data-key="detail" data-value="small (under 20 ft)">
           <span class="triage-card-emoji">🌱</span>Small<span class="triage-card-sub">Under 20 ft</span>
         </button>
-        <button class="triage-card" data-step="2" data-key="size" data-value="medium (20–40 ft)">
+        <button class="triage-card" data-key="detail" data-value="medium (20–40 ft)">
           <span class="triage-card-emoji">🌲</span>Medium<span class="triage-card-sub">20–40 ft</span>
         </button>
-        <button class="triage-card" data-step="2" data-key="size" data-value="large (40+ ft)">
+        <button class="triage-card" data-key="detail" data-value="large (40+ ft)">
           <span class="triage-card-emoji">🌳</span>Large<span class="triage-card-sub">40+ ft</span>
         </button>
+        <button class="triage-card" data-key="detail" data-value="not sure on size">
+          <span class="triage-card-emoji">🤷</span>Not Sure
+        </button>
       </div>
-      <button class="btn btn-red triage-continue" id="triage-s2-next" disabled>Continue →</button>
+      <button class="btn btn-red triage-continue" id="triage-s2-standard-next" disabled>Continue →</button>
+    </div>
+
+    <!-- Step 2b — Stump: location + diameter -->
+    <div class="triage-step" id="triage-s2-stump">
+      <h2 class="triage-question">Tell us about the stump.</h2>
+      <p class="triage-sublabel">Where is it?</p>
+      <div class="triage-cards triage-cards-3">
+        <button class="triage-card" data-key="location" data-value="front yard">
+          <span class="triage-card-emoji">🏠</span>Front Yard
+        </button>
+        <button class="triage-card" data-key="location" data-value="back yard">
+          <span class="triage-card-emoji">🌿</span>Back Yard
+        </button>
+        <button class="triage-card" data-key="location" data-value="side yard">
+          <span class="triage-card-emoji">↔️</span>Side Yard
+        </button>
+      </div>
+      <p class="triage-sublabel" style="margin-top:14px">How wide is the stump?</p>
+      <div class="triage-cards triage-cards-3" style="grid-template-columns:repeat(2,1fr)">
+        <button class="triage-card" data-key="detail" data-value="small stump (under 12 in diameter)">
+          <span class="triage-card-emoji">🟤</span>Small<span class="triage-card-sub">Under 12"</span>
+        </button>
+        <button class="triage-card" data-key="detail" data-value="medium stump (12–24 in diameter)">
+          <span class="triage-card-emoji">🪵</span>Medium<span class="triage-card-sub">12"–24"</span>
+        </button>
+        <button class="triage-card" data-key="detail" data-value="large stump (24+ in diameter)">
+          <span class="triage-card-emoji">🌳</span>Large<span class="triage-card-sub">Over 24"</span>
+        </button>
+        <button class="triage-card" data-key="detail" data-value="not sure on stump size">
+          <span class="triage-card-emoji">🤷</span>Not Sure
+        </button>
+      </div>
+      <button class="btn btn-red triage-continue" id="triage-s2-stump-next" disabled>Continue →</button>
+    </div>
+
+    <!-- Step 2c — Storm: situation only (no location needed) -->
+    <div class="triage-step" id="triage-s2-storm">
+      <h2 class="triage-question">What's the situation?</h2>
+      <p class="triage-hint">Tap one to continue.</p>
+      <div class="triage-cards">
+        <button class="triage-card" data-key="detail" data-value="branch down in yard — cleanup needed">
+          <span class="triage-card-emoji">🌿</span>Branch Down
+        </button>
+        <button class="triage-card" data-key="detail" data-value="full tree down in yard — not on structure">
+          <span class="triage-card-emoji">🌳</span>Tree Down in Yard
+        </button>
+        <button class="triage-card" data-key="detail" data-value="URGENT: tree on vehicle">
+          <span class="triage-card-emoji">🚗</span>Tree on Vehicle
+        </button>
+        <button class="triage-card" data-key="detail" data-value="URGENT: tree on roof or structure">
+          <span class="triage-card-emoji">🏠</span>Tree on Roof
+        </button>
+      </div>
     </div>
 
     <!-- Step 3 — SMS hand-off -->
@@ -2612,25 +2668,87 @@
 
   // ----- Photo Triage Wizard -----
   (function () {
-    const wizard      = document.getElementById('triage-wizard');
-    const progressFill= document.getElementById('triage-progress-fill');
-    const stepCount   = document.getElementById('triage-step-count');
-    const backBtn     = document.getElementById('triage-back');
-    const closeBtn    = document.getElementById('triage-close');
-    const s2Next      = document.getElementById('triage-s2-next');
-    const smsLink     = document.getElementById('triage-sms-link');
-    const steps       = ['triage-s1','triage-s2','triage-s3'].map(id => document.getElementById(id));
-    const progressPct = ['33%','66%','100%'];
+    const wizard       = document.getElementById('triage-wizard');
+    const progressFill = document.getElementById('triage-progress-fill');
+    const stepCount    = document.getElementById('triage-step-count');
+    const backBtn      = document.getElementById('triage-back');
+    const closeBtn     = document.getElementById('triage-close');
+    const smsLink      = document.getElementById('triage-sms-link');
 
-    let currentStep = 0;
-    const answers   = { service: '', location: '', size: '' };
+    // All named panels
+    const PANELS = {
+      s1:       document.getElementById('triage-s1'),
+      standard: document.getElementById('triage-s2-standard'),
+      stump:    document.getElementById('triage-s2-stump'),
+      storm:    document.getElementById('triage-s2-storm'),
+      s3:       document.getElementById('triage-s3'),
+    };
+
+    // Continue buttons
+    const nextStandard = document.getElementById('triage-s2-standard-next');
+    const nextStump    = document.getElementById('triage-s2-stump-next');
+
+    // State
+    let currentPanel = 's1';
+    let prevPanel    = null;
+    const answers    = { service: '', location: '', detail: '' };
+
+    // Which step 2 panel to show based on service
+    function step2Panel() {
+      if (answers.service === 'Stump Grinding')       return 'stump';
+      if (answers.service === 'Storm Damage Cleanup') return 'storm';
+      return 'standard';
+    }
+
+    function showPanel(id) {
+      Object.values(PANELS).forEach(p => p.classList.remove('active'));
+      PANELS[id].classList.add('active');
+      prevPanel    = currentPanel;
+      currentPanel = id;
+      wizard.scrollTop = 0;
+
+      // Progress + step label
+      const pct   = { s1: '33%', standard: '66%', stump: '66%', storm: '66%', s3: '100%' };
+      const label = { s1: 'Step 1 of 3', standard: 'Step 2 of 3', stump: 'Step 2 of 3', storm: 'Step 2 of 3', s3: 'Step 3 of 3' };
+      progressFill.style.width  = pct[id];
+      stepCount.textContent     = label[id];
+      backBtn.style.visibility  = id === 's1' ? 'hidden' : 'visible';
+    }
+
+    function resetContinue() {
+      if (nextStandard) nextStandard.disabled = !(answers.location && answers.detail);
+      if (nextStump)    nextStump.disabled    = !(answers.location && answers.detail);
+    }
+
+    function buildSmsBody() {
+      const svc = answers.service;
+      if (svc === 'Storm Damage Cleanup') {
+        return encodeURIComponent(
+          `Hi Daniel! I found Next Level Tree Service online. STORM DAMAGE — ${answers.detail}. I'm sending a photo now. Can you help?`
+        );
+      }
+      if (svc === 'Stump Grinding') {
+        return encodeURIComponent(
+          `Hi Daniel! I found Next Level Tree Service online. I need stump grinding in my ${answers.location}. The stump is ${answers.detail}. Sending a photo now — can you give me a ballpark?`
+        );
+      }
+      return encodeURIComponent(
+        `Hi Daniel! I found Next Level Tree Service online. I need ${svc} in my ${answers.location}. The tree is ${answers.detail}. Sending a photo now — can you give me a ballpark?`
+      );
+    }
+
+    function goToSms() {
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+      smsLink.href = `sms:8172171155${isIOS ? '&' : '?'}body=${buildSmsBody()}`;
+      showPanel('s3');
+    }
 
     function openWizard() {
-      currentStep = 0;
-      answers.service = answers.location = answers.size = '';
+      answers.service = answers.location = answers.detail = '';
       document.querySelectorAll('.triage-card').forEach(c => c.classList.remove('selected'));
-      s2Next.disabled = true;
-      showStep(0);
+      if (nextStandard) nextStandard.disabled = true;
+      if (nextStump)    nextStump.disabled    = true;
+      showPanel('s1');
       wizard.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
@@ -2640,54 +2758,67 @@
       document.body.style.overflow = '';
     }
 
-    function showStep(n) {
-      steps.forEach((s, i) => s.classList.toggle('active', i === n));
-      progressFill.style.width = progressPct[n];
-      stepCount.textContent    = `Step ${n + 1} of 3`;
-      backBtn.style.visibility = n === 0 ? 'hidden' : 'visible';
-      currentStep = n;
-      wizard.scrollTop = 0;
-    }
-
-    function buildSmsBody() {
-      return encodeURIComponent(
-        `Hi Daniel! I found Next Level Tree Service online. I need: ${answers.service} — it's in my ${answers.location} and the tree is ${answers.size}. I'm sending a photo now. Can you give me a ballpark quote?`
-      );
-    }
-
-    // Card taps
-    document.querySelectorAll('.triage-card').forEach(card => {
+    // Card taps — scoped to each panel to avoid cross-panel key conflicts
+    document.querySelectorAll('#triage-s1 .triage-card').forEach(card => {
       card.addEventListener('click', () => {
-        const key  = card.dataset.key;
-        const step = parseInt(card.dataset.step);
-
-        // Clear siblings in same group
-        document.querySelectorAll(`.triage-card[data-key="${key}"]`)
-          .forEach(c => c.classList.remove('selected'));
+        document.querySelectorAll('#triage-s1 .triage-card').forEach(c => c.classList.remove('selected'));
         card.classList.add('selected');
-        answers[key] = card.dataset.value;
+        answers.service = card.dataset.value;
+        // Reset step 2 answers when service changes
+        answers.location = '';
+        answers.detail   = '';
+        document.querySelectorAll('.triage-card[data-key="location"]').forEach(c => c.classList.remove('selected'));
+        document.querySelectorAll('.triage-card[data-key="detail"]').forEach(c => c.classList.remove('selected'));
+        if (nextStandard) nextStandard.disabled = true;
+        if (nextStump)    nextStump.disabled    = true;
+        setTimeout(() => showPanel(step2Panel()), 200);
+      });
+    });
 
-        if (step === 1) {
-          setTimeout(() => showStep(1), 200);
+    // Location cards (shared across standard + stump panels)
+    document.querySelectorAll('.triage-card[data-key="location"]').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.triage-card[data-key="location"]').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        answers.location = card.dataset.value;
+        resetContinue();
+      });
+    });
+
+    // Detail cards (height / diameter / storm situation)
+    document.querySelectorAll('.triage-card[data-key="detail"]').forEach(card => {
+      card.addEventListener('click', () => {
+        // Only clear siblings within the same panel
+        const panel = card.closest('.triage-step');
+        panel.querySelectorAll('.triage-card[data-key="detail"]').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        answers.detail = card.dataset.value;
+        // Storm: auto-advance on tap
+        if (answers.service === 'Storm Damage Cleanup') {
+          setTimeout(goToSms, 200);
         } else {
-          s2Next.disabled = !(answers.location && answers.size);
+          resetContinue();
         }
       });
     });
 
-    s2Next.addEventListener('click', () => {
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-      smsLink.href = `sms:8172171155${isIOS ? '&' : '?'}body=${buildSmsBody()}`;
-      showStep(2);
+    if (nextStandard) nextStandard.addEventListener('click', goToSms);
+    if (nextStump)    nextStump.addEventListener('click', goToSms);
+
+    backBtn.addEventListener('click', () => {
+      if (currentPanel === 's3' || currentPanel === 'standard' || currentPanel === 'stump' || currentPanel === 'storm') {
+        showPanel('s1');
+      } else if (currentPanel !== 's1') {
+        showPanel('s1');
+      }
     });
 
-    backBtn.addEventListener('click',  () => { if (currentStep > 0) showStep(currentStep - 1); });
     closeBtn.addEventListener('click', closeWizard);
 
     // Expose for modal JS
     window._openWizard = openWizard;
 
-    // Trigger from hero CTA on mobile
+    // Hero CTA
     const heroCta = document.getElementById('hero-estimate-btn');
     if (heroCta) {
       heroCta.addEventListener('click', e => {
